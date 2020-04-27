@@ -1,0 +1,12 @@
+{
+    "name": "david/tsukiko",
+    "license": "GPL2",
+    "authors": [
+        {
+            "name": "David Peach",
+            "email": "mail@davidpeach.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
