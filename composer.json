@@ -1,6 +1,7 @@
 {
     "name": "david/tsukiko",
     "license": "GPL2",
+    "type":"wordpress-theme",
     "authors": [
         {
             "name": "David Peach",
