@@ -2291,6 +2291,19 @@ body.template-cover .entry-header {
 	transform: translateY(20%);
 }
 
+.tsukiko-cover-medium .cover-header-inner-wrapper {
+    min-height: 70vh;
+}
+
+.tsukiko-cover-medium .to-the-content-wrapper,
+.tsukiko-cover-hide-arrow .to-the-content-wrapper {
+    display: none;
+}
+
+.page.tsukiko-cover-medium .intro-text p:last-child,
+.page.tsukiko-cover-hide-arrow .intro-text p:last-child {
+    margin-bottom: 0;
+}
 
 /* -------------------------------------------------------------------------- */
 
@@ -3677,6 +3690,66 @@ figure.wp-block-table.is-style-stripes {
 	width: calc(100% - 4rem);
 }
 
+/* Conternt width changes */
+.tsukiko-text-width-medium .section-inner.thin,
+.tsukiko-text-width-medium .post-meta-wrapper,
+.tsukiko-text-width-medium .author-bio,
+.tsukiko-text-width-medium .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide),
+.tsukiko-text-width-medium [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide),
+.tsukiko-text-width-medium .comment-respond p:not(.comment-notes),
+.tsukiko-text-width-medium .alignfull > figcaption,
+.tsukiko-text-width-medium .alignwide > figcaption {
+    max-width: 70rem;
+}
+
+.tsukiko-text-width-wide .section-inner.thin,
+.tsukiko-text-width-wide .post-meta-wrapper,
+.tsukiko-text-width-wide .author-bio,
+.tsukiko-text-width-wide .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide),
+.tsukiko-text-width-wide [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide),
+.tsukiko-text-width-wide .comment-respond p:not(.comment-notes),
+.tsukiko-text-width-wide .alignfull > figcaption,
+.tsukiko-text-width-wide .alignwide > figcaption {
+    max-width: 80rem;
+}
+
+.tsukiko-text-width-medium .comment-content.entry-content > *,
+.tsukiko-text-width-wide .comment-content.entry-content > * {
+    width: 100% !important;
+}
+
+.tsukiko-text-width-medium .wp-block-group .wp-block-image .alignleft,
+.tsukiko-text-width-wide .wp-block-group .wp-block-image .alignleft {
+    margin-left: 0 !important;
+}
+
+.tsukiko-text-width-medium .wp-block-group .wp-block-image .alignright,
+.tsukiko-text-width-wide .wp-block-group .wp-block-image .alignright {
+    margin-right: 0 !important;
+}
+
+.tsukiko-blog-stack.tsukiko-text-width-medium .hentry .section-inner,
+.tsukiko-blog-stack.tsukiko-text-width-medium .product .section-inner,
+.tsukiko-blog-stack.tsukiko-text-width-medium .post-separator {
+    max-width: 70rem;
+}
+
+.tsukiko-blog-stack.tsukiko-text-width-wide .hentry .section-inner,
+.tsukiko-blog-stack.tsukiko-text-width-wide .product .section-inner,
+.tsukiko-blog-stack.tsukiko-text-width-wide .post-separator {
+    max-width: 80rem;
+}
+
+.tsukiko-text-width-medium .featured-media .wp-caption-text {
+    max-width: 70rem;
+}
+
+.tsukiko-text-width-wide .featured-media .wp-caption-text {
+    max-width: 80rem;
+}
+
+
+
 
 /* -------------------------------------------------------------------------- */
 
@@ -4719,6 +4792,40 @@ a.to-the-top > * {
 	.post-nav-links {
 		margin: 3em auto 0 auto;
 	}
+
+	.tsukiko-text-width-medium .entry-content > .wp-block-image .alignleft,
+    .tsukiko-text-width-wide .entry-content > .wp-block-image .alignleft {
+       margin-left: auto;
+    }
+
+    .tsukiko-text-width-medium .entry-content > .wp-block-image .alignright,
+    .tsukiko-text-width-wide .entry-content > .wp-block-image .alignright {
+       margin-right: auto;
+    }
+}
+
+@media (max-width: 699px) {
+
+	.tsukiko-text-width-medium .entry-content > .alignleft,
+    .tsukiko-text-width-wide .entry-content > .alignleft {
+        margin-left: 2rem;
+    }
+
+    .tsukiko-text-width-medium .entry-content > .alignright,
+    .tsukiko-text-width-wide .entry-content > .alignright {
+        margin-right: 2rem;
+    }
+
+    .tsukiko-text-width-medium [class*="wp-block"] > [class*="__inner-container"] > .alignleft,
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .alignleft {
+        margin-left: 0 !important;
+    }
+
+    .tsukiko-text-width-medium [class*="wp-block"] > [class*="__inner-container"] > .alignright,
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .alignright {
+        margin-right: 0 !important;
+    }
+
 }
 
 @media ( min-width: 700px ) {
@@ -5627,6 +5734,111 @@ a.to-the-top > * {
 		display: none;
 	}
 
+	.tsukiko-text-width-medium .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide),
+    .tsukiko-text-width-wide .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+        width: calc(100% - 8rem);
+    }
+
+    .tsukiko-text-width-medium .entry-content > .wp-block-image .alignleft,
+    .tsukiko-text-width-wide .entry-content > .wp-block-image .alignleft,
+    .tsukiko-text-width-medium [class*="wp-block"] > [class*="__inner-container"] > .wp-block-image .alignleft,
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .wp-block-image .alignleft {
+        position: relative;
+        left: auto;
+        right: auto;
+        margin: 0.3rem 2rem 2rem auto;
+    }
+
+    .tsukiko-text-width-medium .entry-content > .alignleft,
+    .tsukiko-text-width-wide .entry-content > .alignleft,
+    .tsukiko-text-width-medium [class*="wp-block"] > [class*="__inner-container"] > .alignleft,
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .alignleft {
+        margin: 0.3rem 2rem 2rem calc(calc(100% - 70rem) / 2);
+        position: relative;
+        left: auto;
+        right: auto;
+        max-width: 29rem;
+    }
+
+    .tsukiko-text-width-medium [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > .alignleft {
+        margin-left: calc(calc(100% - 70rem) / 2);
+    }
+
+    .tsukiko-text-width-wide .entry-content > .alignleft,
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .alignleft,
+    .tsukiko-text-width-wide [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > .alignleft {
+        margin: 0.3rem 2rem 2rem calc(calc(100% - 80rem) / 2);
+    }
+
+    .tsukiko-text-width-medium .entry-content > .wp-block-image .alignright,
+    .tsukiko-text-width-wide .entry-content > .wp-block-image .alignright,
+    .tsukiko-text-width-medium [class*="wp-block"] > [class*="__inner-container"] > .wp-block-image .alignright,
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .wp-block-image .alignright {
+        position: relative;
+        left: auto;
+        right: auto;
+        margin: 0.3rem auto 2rem 2rem;
+    }
+
+    .tsukiko-text-width-medium .entry-content > .alignright,
+    .tsukiko-text-width-wide .entry-content > .alignright,
+    .tsukiko-text-width-medium [class*="wp-block"] > [class*="__inner-container"] > .alignright,
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .alignright {
+        margin: 0.3rem calc(calc(100% - 70rem) / 2) 2rem 2rem;
+        position: relative;
+        left: auto;
+        right: auto;
+        max-width: 29rem;
+    }
+
+    .tsukiko-text-width-medium [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > .alignright {
+        margin-right: calc(calc(100% - 70rem) / 2);
+    }
+
+    .tsukiko-text-width-wide .entry-content > .alignright,
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .alignright,
+    .tsukiko-text-width-wide [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > .alignright{
+         margin: 0.3rem calc(calc(100% - 80rem) / 2) 2rem 2rem;
+    }
+
+}
+
+@media (min-width: 700px) and (max-width: 780px) {
+    .tsukiko-text-width-medium .entry-content > .alignleft,
+    .tsukiko-text-width-medium [class*="wp-block"] > [class*="__inner-container"] > .alignleft {
+        margin-left: 4rem;
+    }
+
+    .tsukiko-text-width-medium .entry-content > .alignright,
+    .tsukiko-text-width-medium [class*="wp-block"] > [class*="__inner-container"] > .alignright {
+        margin-right: 4rem;
+    }
+
+    .tsukiko-text-width-medium .wp-block-group .alignleft {
+        margin-left: 0 !important;
+    }
+
+    .tsukiko-text-width-medium .wp-block-group .alignright {
+        margin-right: 0 !important;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .tsukiko-text-width-wide .entry-content > .alignleft {
+        margin-left: 4rem;
+    }
+
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .alignleft {
+        margin-left: 0 !important;
+    }
+
+    .tsukiko-text-width-wide .entry-content > .alignright {
+        margin-right: 4rem;
+    }
+
+    .tsukiko-text-width-wide [class*="wp-block"] > [class*="__inner-container"] > .alignright{
+        margin-right: 0 !important;
+    }
 }
 
 @media (min-width: 782px) {
@@ -6091,6 +6303,13 @@ a.to-the-top > * {
 	.footer-menu li {
 		margin: 1.2rem 0 0 2.4rem;
 	}
+
+	.tsukiko-text-width-medium .entry-content .wp-block-image .alignleft,
+    .tsukiko-text-width-medium .entry-content .wp-block-image .alignright,
+    .tsukiko-text-width-wide .entry-content .wp-block-image .alignleft,
+    .tsukiko-text-width-wide .entry-content .wp-block-image .alignright{
+        max-width: 26rem !important;
+    }
 }
 
 

@@ -9,15 +9,15 @@ Default theme for 2020.
 
 == Description ==
 
-Our default theme for 2020 is designed to take full advantage of the 
-flexibility of the block editor. Organizations and businesses have the 
-ability to create dynamic landing pages with endless layouts using the 
-group and column blocks. The centered content column and fine-tuned 
-typography also makes it perfect for traditional blogs. Complete editor 
-styles give you a good idea of what your content will look like, even 
-before you publish. You can give your site a personal touch by changing 
-the background colors and the accent color in the Customizer. The colors of 
-all elements on your site are automatically calculated based on the colors 
+Our default theme for 2020 is designed to take full advantage of the
+flexibility of the block editor. Organizations and businesses have the
+ability to create dynamic landing pages with endless layouts using the
+group and column blocks. The centered content column and fine-tuned
+typography also makes it perfect for traditional blogs. Complete editor
+styles give you a good idea of what your content will look like, even
+before you publish. You can give your site a personal touch by changing
+the background colors and the accent color in the Customizer. The colors of
+all elements on your site are automatically calculated based on the colors
 you pick, ensuring a high, accessible color contrast for your visitors.
 
 == Changelog ==
@@ -58,7 +58,7 @@ Chaplin Theme is distributed under the terms of the GNU GPL version 2.0
 Twenty Twenty bundles the following third-party resources:
 
 Illustrations in screenshot.png by Tammie Lister
-License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/  
+License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
 
 Inter Font
 Copyright (c) 2016-2019 The Inter Project Authors (me@rsms.me)
@@ -87,17 +87,17 @@ Copyright (c) 2018-2020 WordPress.org
 License: GPLv2
 Source: https://wordpress.org/themes/twentynineteen/
 Included as part of the following classes and functions:
-- TwentyTwenty_SVG_Icons
-- twentytwenty_the_theme_svg()
-- twentytwenty_get_theme_svg()
-- twentytwenty_nav_menu_social_icons()
+- tsukiko_SVG_Icons
+- tsukiko_the_theme_svg()
+- tsukiko_get_theme_svg()
+- tsukiko_nav_menu_social_icons()
 
 Code from Twenty Seventeen
 Copyright (c) 2016-2020 WordPress.org
 License: GPLv2
 Source: https://wordpress.org/themes/twentyseventeen/
 Included as part of the following classes and functions:
-- twentytwenty_unique_id()
+- tsukiko_unique_id()
 
-Underscores 
+Underscores
 https://underscores.me/, (C) 2012-2019 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)

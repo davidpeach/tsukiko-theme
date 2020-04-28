@@ -9,11 +9,11 @@
 
 if ( class_exists( 'WP_Customize_Control' ) ) {
 
-	if ( ! class_exists( 'TwentyTwenty_Separator_Control' ) ) {
+	if ( ! class_exists( 'tsukiko_Separator_Control' ) ) {
 		/**
 		 * Separator Control.
 		 */
-		class TwentyTwenty_Separator_Control extends WP_Customize_Control {
+		class tsukiko_Separator_Control extends WP_Customize_Control {
 			/**
 			 * Render the hr.
 			 */

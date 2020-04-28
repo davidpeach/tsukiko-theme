@@ -7,12 +7,12 @@
  * @since Twenty Twenty 1.0
  */
 
-if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
+if ( ! class_exists( 'tsukiko_SVG_Icons' ) ) {
 	/**
 	 * SVG ICONS CLASS
 	 * Retrieve the SVG code for the specified icon. Based on a solution in Twenty Nineteen.
 	 */
-	class TwentyTwenty_SVG_Icons {
+	class tsukiko_SVG_Icons {
 		/**
 		 * GET SVG CODE
 		 * Get the SVG code for the specified icon
@@ -61,7 +61,7 @@ if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
 			}
 			foreach ( $regex_map as $icon => $regex ) {
 				if ( preg_match( $regex, $uri ) ) {
-					return twentytwenty_get_theme_svg( $icon, 'social' );
+					return tsukiko_get_theme_svg( $icon, 'social' );
 				}
 			}
 			return null;

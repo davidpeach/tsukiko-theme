@@ -1,0 +1,32 @@
+.control-section-twentig-more .accordion-section-title .button {
+    margin-top: -4px;
+    margin-right: -15px;
+    font-weight: 400;
+}
+
+.rtl .control-section-twentig-more .accordion-section-title .button {
+    float: left;
+}
+
+.customize-control-section-title {
+    margin: 20px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 28px;
+}
+
+.customize-section-description-container + .customize-control-section-title {
+	border-top: 0;
+    padding-top: 0;
+    margin-top: 12px;
+}
+
+.tsukiko-customize-section-title {
+    font-size: 17px;
+    margin: 0;
+}
+
+.tsukiko-customize-section-title + .customize-control-description,
+.customize-control-section-title .customize-control-description {
+	margin-top: 12px;
+	font-style: normal;
+}

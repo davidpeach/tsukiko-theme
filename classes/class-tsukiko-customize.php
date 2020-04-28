@@ -7,11 +7,11 @@
  * @since Twenty Twenty 1.0
  */
 
-if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
+if ( ! class_exists( 'tsukiko_Customize' ) ) {
 	/**
 	 * CUSTOMIZER SETTINGS
 	 */
-	class TwentyTwenty_Customize {
+	class tsukiko_Customize {
 
 		/**
 		 * Register customizer options.
@@ -19,6 +19,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 		 */
 		public static function register( $wp_customize ) {
+
+
+
+
 
 			/**
 			 * Site Title & Description.
@@ -30,7 +34,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'blogname',
 				array(
 					'selector'        => '.site-title a',
-					'render_callback' => 'twentytwenty_customize_partial_blogname',
+					'render_callback' => 'tsukiko_customize_partial_blogname',
 				)
 			);
 
@@ -38,7 +42,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'blogdescription',
 				array(
 					'selector'        => '.site-description',
-					'render_callback' => 'twentytwenty_customize_partial_blogdescription',
+					'render_callback' => 'tsukiko_customize_partial_blogdescription',
 				)
 			);
 
@@ -46,7 +50,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'custom_logo',
 				array(
 					'selector'        => '.header-titles [class*=site-]:not(.site-description)',
-					'render_callback' => 'twentytwenty_customize_partial_site_logo',
+					'render_callback' => 'tsukiko_customize_partial_site_logo',
 				)
 			);
 
@@ -54,7 +58,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				'retina_logo',
 				array(
 					'selector'        => '.header-titles [class*=site-]:not(.site-description)',
-					'render_callback' => 'twentytwenty_customize_partial_site_logo',
+					'render_callback' => 'tsukiko_customize_partial_site_logo',
 				)
 			);
 
@@ -78,8 +82,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'type'        => 'checkbox',
 					'section'     => 'title_tagline',
 					'priority'    => 10,
-					'label'       => __( 'Retina logo', 'twentytwenty' ),
-					'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'twentytwenty' ),
+					'label'       => __( 'Retina logo', 'tsukiko' ),
+					'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'tsukiko' ),
 				)
 			);
 
@@ -98,7 +102,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'header_footer_background_color',
 					array(
-						'label'   => __( 'Header &amp; Footer Background Color', 'twentytwenty' ),
+						'label'   => __( 'Header &amp; Footer Background Color', 'tsukiko' ),
 						'section' => 'colors',
 					)
 				)
@@ -120,10 +124,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'type'    => 'radio',
 					'section' => 'colors',
-					'label'   => __( 'Primary Color', 'twentytwenty' ),
+					'label'   => __( 'Primary Color', 'tsukiko' ),
 					'choices' => array(
-						'default' => __( 'Default', 'twentytwenty' ),
-						'custom'  => __( 'Custom', 'twentytwenty' ),
+						'default' => __( 'Default', 'tsukiko' ),
+						'custom'  => __( 'Custom', 'tsukiko' ),
 					),
 				)
 			);
@@ -180,7 +184,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					array(
 						'section'         => 'colors',
 						'settings'        => 'accent_hue',
-						'description'     => __( 'Apply a custom color for links, buttons, featured images.', 'twentytwenty' ),
+						'description'     => __( 'Apply a custom color for links, buttons, featured images.', 'tsukiko' ),
 						'mode'            => 'hue',
 						'active_callback' => function() use ( $wp_customize ) {
 							return ( 'custom' === $wp_customize->get_setting( 'accent_hue_active' )->value() );
@@ -199,7 +203,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_section(
 				'options',
 				array(
-					'title'      => __( 'Theme Options', 'twentytwenty' ),
+					'title'      => __( 'Theme Options', 'tsukiko' ),
 					'priority'   => 40,
 					'capability' => 'edit_theme_options',
 				)
@@ -222,7 +226,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'type'     => 'checkbox',
 					'section'  => 'options',
 					'priority' => 10,
-					'label'    => __( 'Show search in header', 'twentytwenty' ),
+					'label'    => __( 'Show search in header', 'tsukiko' ),
 				)
 			);
 
@@ -243,7 +247,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'type'     => 'checkbox',
 					'section'  => 'options',
 					'priority' => 10,
-					'label'    => __( 'Show author bio', 'twentytwenty' ),
+					'label'    => __( 'Show author bio', 'tsukiko' ),
 				)
 			);
 
@@ -264,10 +268,10 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'type'     => 'radio',
 					'section'  => 'options',
 					'priority' => 10,
-					'label'    => __( 'On archive pages, posts show:', 'twentytwenty' ),
+					'label'    => __( 'On archive pages, posts show:', 'tsukiko' ),
 					'choices'  => array(
-						'full'    => __( 'Full text', 'twentytwenty' ),
-						'summary' => __( 'Summary', 'twentytwenty' ),
+						'full'    => __( 'Full text', 'tsukiko' ),
+						'summary' => __( 'Summary', 'tsukiko' ),
 					),
 				)
 			);
@@ -278,9 +282,9 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_section(
 				'cover_template_options',
 				array(
-					'title'       => __( 'Cover Template', 'twentytwenty' ),
+					'title'       => __( 'Cover Template', 'tsukiko' ),
 					'capability'  => 'edit_theme_options',
-					'description' => __( 'Settings for the "Cover Template" page template. Add a featured image to use as background.', 'twentytwenty' ),
+					'description' => __( 'Settings for the "Cover Template" page template. Add a featured image to use as background.', 'tsukiko' ),
 					'priority'    => 42,
 				)
 			);
@@ -302,8 +306,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'cover_template_options',
-					'label'       => __( 'Fixed Background Image', 'twentytwenty' ),
-					'description' => __( 'Creates a parallax effect when the visitor scrolls.', 'twentytwenty' ),
+					'label'       => __( 'Fixed Background Image', 'tsukiko' ),
+					'description' => __( 'Creates a parallax effect when the visitor scrolls.', 'tsukiko' ),
 				)
 			);
 
@@ -325,7 +329,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			);
 
 			$wp_customize->add_control(
-				new TwentyTwenty_Separator_Control(
+				new tsukiko_Separator_Control(
 					$wp_customize,
 					'cover_template_separator_1',
 					array(
@@ -339,7 +343,7 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_setting(
 				'cover_template_overlay_background_color',
 				array(
-					'default'           => twentytwenty_get_color_for_area( 'content', 'accent' ),
+					'default'           => tsukiko_get_color_for_area( 'content', 'accent' ),
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
@@ -349,8 +353,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'cover_template_overlay_background_color',
 					array(
-						'label'       => __( 'Overlay Background Color', 'twentytwenty' ),
-						'description' => __( 'The color used for the overlay. Defaults to the accent color.', 'twentytwenty' ),
+						'label'       => __( 'Overlay Background Color', 'tsukiko' ),
+						'description' => __( 'The color used for the overlay. Defaults to the accent color.', 'tsukiko' ),
 						'section'     => 'cover_template_options',
 					)
 				)
@@ -371,8 +375,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					$wp_customize,
 					'cover_template_overlay_text_color',
 					array(
-						'label'       => __( 'Overlay Text Color', 'twentytwenty' ),
-						'description' => __( 'The color used for the text in the overlay.', 'twentytwenty' ),
+						'label'       => __( 'Overlay Text Color', 'tsukiko' ),
+						'description' => __( 'The color used for the text in the overlay.', 'tsukiko' ),
 						'section'     => 'cover_template_options',
 					)
 				)
@@ -392,11 +396,11 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			$wp_customize->add_control(
 				'cover_template_overlay_opacity',
 				array(
-					'label'       => __( 'Overlay Opacity', 'twentytwenty' ),
-					'description' => __( 'Make sure that the contrast is high enough so that the text is readable.', 'twentytwenty' ),
+					'label'       => __( 'Overlay Opacity', 'tsukiko' ),
+					'description' => __( 'Make sure that the contrast is high enough so that the text is readable.', 'tsukiko' ),
 					'section'     => 'cover_template_options',
 					'type'        => 'range',
-					'input_attrs' => twentytwenty_customize_opacity_range(),
+					'input_attrs' => tsukiko_customize_opacity_range(),
 				)
 			);
 
@@ -407,7 +411,78 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'type'     => 'cover_opacity',
 				)
 			);
+
+			$wp_customize->add_setting( 'tsukiko_cover_page_height', array(
+				'default' 			=> '',
+				'transport'			=> 'postMessage',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+			) );
+
+			$wp_customize->add_control( 'tsukiko_cover_page_height', array(
+				'label'			=> __( 'Page Cover Height', 'tsukiko' ),
+				'section'		=> 'cover_template_options',
+				'type'			=> 'select',
+				'choices'		=> array(
+					'medium'	=> __( 'Medium', 'tsukiko' ),
+					''			=> __( 'Full', 'tsukiko' ),
+				),
+			) );
+
+			$wp_customize->add_panel( 'tsukiko_theme_options_panel', array(
+				'title' 	=> __( 'Tsukiko Theme Options', 'tsukiko' ),
+				'priority'	=> 150,
+			) );
+
+			$wp_customize->add_section(
+				'tsukiko_theme_options',
+				array(
+					'title'      => __( 'Blog', 'tsukiko' ),
+					'panel'		 => 'tsukiko_theme_options_panel',
+					'priority'   => 40,
+					'capability' => 'edit_theme_options',
+				)
+			);
+
+			$wp_customize->add_setting( 'tsukiko_post_excerpt', array(
+				'default' 			=> 1,
+				'sanitize_callback' => 'absint',
+			) );
+
+			$wp_customize->add_control( 'tsukiko_post_excerpt', array(
+				'label'		=> __( 'Display manual excerpt below the title', 'tsukiko' ),
+				'section'	=> 'tsukiko_theme_options',
+				'type'		=> 'checkbox',
+				'priority' 	=> 35,
+			) );
+
+			$wp_customize->add_section(
+				'tsukiko_site_layout_options',
+				array(
+					'title'      => __( 'Site Layout', 'tsukiko' ),
+					'panel'		 => 'tsukiko_theme_options_panel',
+					'priority'   => 40,
+					'capability' => 'edit_theme_options',
+				)
+			);
+
+			$wp_customize->add_setting( 'tsukiko_text_width', array(
+				'default'			=> '',
+				'transport'			=> 'postMessage',
+				'sanitize_callback'	=> array( __CLASS__, 'sanitize_select' ),
+			) );
+
+			$wp_customize->add_control( 'tsukiko_text_width', array(
+				'label'			=> __( 'Text Width', 'tsukiko' ),
+				'section'		=> 'tsukiko_site_layout_options',
+				'type'			=> 'radio',
+				'choices'		=> array(
+					''			=> __( 'Narrow (Default)', 'tsukiko' ),
+					'medium'	=> __( 'Medium', 'tsukiko' ),
+					'wide'		=> __( 'Wide', 'tsukiko' ),
+				),
+			) );
 		}
+
 
 		/**
 		 * Sanitization callback for the "accent_accessible_colors" setting.
@@ -458,42 +533,50 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 			return ( ( isset( $checked ) && true === $checked ) ? true : false );
 		}
 
+		/**
+		 * Sanitize fonts choices (allow uppercase and space chars).
+		 */
+		public static function tsukiko_sanitize_fonts( $choice, $setting ) {
+			$choices = $setting->manager->get_control( $setting->id )->choices;
+			return ( array_key_exists( $choice, $choices ) ? $choice : $setting->default );
+		}
+
 	}
 
 	// Setup the Theme Customizer settings and controls.
-	add_action( 'customize_register', array( 'TwentyTwenty_Customize', 'register' ) );
+	add_action( 'customize_register', array( 'tsukiko_Customize', 'register' ) );
 
 }
 
 /**
  * PARTIAL REFRESH FUNCTIONS
  * */
-if ( ! function_exists( 'twentytwenty_customize_partial_blogname' ) ) {
+if ( ! function_exists( 'tsukiko_customize_partial_blogname' ) ) {
 	/**
 	 * Render the site title for the selective refresh partial.
 	 */
-	function twentytwenty_customize_partial_blogname() {
+	function tsukiko_customize_partial_blogname() {
 		bloginfo( 'name' );
 	}
 }
 
-if ( ! function_exists( 'twentytwenty_customize_partial_blogdescription' ) ) {
+if ( ! function_exists( 'tsukiko_customize_partial_blogdescription' ) ) {
 	/**
 	 * Render the site description for the selective refresh partial.
 	 */
-	function twentytwenty_customize_partial_blogdescription() {
+	function tsukiko_customize_partial_blogdescription() {
 		bloginfo( 'description' );
 	}
 }
 
-if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
+if ( ! function_exists( 'tsukiko_customize_partial_site_logo' ) ) {
 	/**
 	 * Render the site logo for the selective refresh partial.
 	 *
 	 * Doing it this way so we don't have issues with `render_callback`'s arguments.
 	 */
-	function twentytwenty_customize_partial_site_logo() {
-		twentytwenty_site_logo();
+	function tsukiko_customize_partial_site_logo() {
+		tsukiko_site_logo();
 	}
 }
 
@@ -503,7 +586,7 @@ if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
  *
  * @return array Array containing attribute names and their values.
  */
-function twentytwenty_customize_opacity_range() {
+function tsukiko_customize_opacity_range() {
 	/**
 	 * Filter the input attributes for opacity
 	 *
@@ -516,7 +599,7 @@ function twentytwenty_customize_opacity_range() {
 	 * }
 	 */
 	return apply_filters(
-		'twentytwenty_customize_opacity_range',
+		'tsukiko_customize_opacity_range',
 		array(
 			'min'  => 0,
 			'max'  => 90,
@@ -524,3 +607,33 @@ function twentytwenty_customize_opacity_range() {
 		)
 	);
 }
+
+function tsukiko_body_class(array $classes)
+{
+	if ( $text_width = get_theme_mod( 'tsukiko_text_width' ) ) {
+		$classes[] = 'tsukiko-text-width-' . $text_width;
+	}
+
+	if (is_page() || is_single()) {
+		if ( is_page_template( 'templates/template-cover.php' ) ) {
+			if ( $cover_height = get_theme_mod( 'tsukiko_cover_page_height' ) ) {
+				$classes[] = 'tsukiko-cover-' . $cover_height;
+			}
+		}
+	}
+
+	return $classes;
+}
+
+add_filter( 'body_class',  'tsukiko_body_class', 11 );
+
+/**
+ * Hide excerpt on single post.
+ */
+function tsukiko_remove_excerpt_single_post( $slug, $name = null ) {
+	if ( is_single() && ! get_theme_mod( 'tsukiko_post_excerpt', true ) ) {
+		add_filter( 'the_excerpt', '__return_empty_string' );
+	}
+}
+add_action( 'get_template_part_template-parts/entry-header', 'tsukiko_remove_excerpt_single_post', 10, 2 );
+add_action( 'get_template_part_template-parts/content-cover', 'tsukiko_remove_excerpt_single_post', 10, 2 );

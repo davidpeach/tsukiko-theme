@@ -1,4 +1,4 @@
-/* global twentyTwentyBgColors, twentyTwentyColor, jQuery, wp, _ */
+/* global tsukikoBgColors, tsukikoColor, jQuery, wp, _ */
 /**
  * Customizer enhancements for a better user experience.
  *
@@ -14,24 +14,24 @@
 		wp.customize( 'accent_hue', function( value ) {
 			value.bind( function( to ) {
 				// Update the value for our accessible colors for all areas.
-				Object.keys( twentyTwentyBgColors ).forEach( function( context ) {
+				Object.keys( tsukikoBgColors ).forEach( function( context ) {
 					var backgroundColorValue;
-					if ( twentyTwentyBgColors[ context ].color ) {
-						backgroundColorValue = twentyTwentyBgColors[ context ].color;
+					if ( tsukikoBgColors[ context ].color ) {
+						backgroundColorValue = tsukikoBgColors[ context ].color;
 					} else {
-						backgroundColorValue = wp.customize( twentyTwentyBgColors[ context ].setting ).get();
+						backgroundColorValue = wp.customize( tsukikoBgColors[ context ].setting ).get();
 					}
-					twentyTwentySetAccessibleColorsValue( context, backgroundColorValue, to );
+					tsukikoSetAccessibleColorsValue( context, backgroundColorValue, to );
 				} );
 			} );
 		} );
 
 		// Add a listener for background-color changes.
-		Object.keys( twentyTwentyBgColors ).forEach( function( context ) {
-			wp.customize( twentyTwentyBgColors[ context ].setting, function( value ) {
+		Object.keys( tsukikoBgColors ).forEach( function( context ) {
+			wp.customize( tsukikoBgColors[ context ].setting, function( value ) {
 				value.bind( function( to ) {
 					// Update the value for our accessible colors for this area.
-					twentyTwentySetAccessibleColorsValue( context, to, wp.customize( 'accent_hue' ).get(), to );
+					tsukikoSetAccessibleColorsValue( context, to, wp.customize( 'accent_hue' ).get(), to );
 				} );
 			} );
 		} );
@@ -48,7 +48,7 @@
 	 *
 	 * @return {void}
 	 */
-	function twentyTwentySetAccessibleColorsValue( context, backgroundColor, accentHue ) {
+	function tsukikoSetAccessibleColorsValue( context, backgroundColor, accentHue ) {
 		var value, colors;
 
 		// Get the current value for our accessible colors, and make sure it's an object.
@@ -56,7 +56,7 @@
 		value = ( _.isObject( value ) && ! _.isArray( value ) ) ? value : {};
 
 		// Get accessible colors for the defined background-color and hue.
-		colors = twentyTwentyColor( backgroundColor, accentHue );
+		colors = tsukikoColor( backgroundColor, accentHue );
 
 		// Sanity check.
 		if ( colors.getAccentColor() && 'function' === typeof colors.getAccentColor().toCSS ) {

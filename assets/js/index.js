@@ -2,10 +2,10 @@
 	Namespace
 --------------------------------------------------------------------------------------------------- */
 
-var twentytwenty = twentytwenty || {};
+var tsukiko = tsukiko || {};
 
 // Set a default value for scrolled.
-twentytwenty.scrolled = 0;
+tsukiko.scrolled = 0;
 
 // polyfill closest
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
@@ -41,7 +41,7 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 }
 
 // event "polyfill"
-twentytwenty.createEvent = function( eventName ) {
+tsukiko.createEvent = function( eventName ) {
 	var event;
 	if ( typeof window.Event === 'function' ) {
 		event = new Event( eventName );
@@ -71,7 +71,7 @@ if ( ! Element.prototype.matches ) {
 
 // Add a class to the body for when touch is enabled for browsers that don't support media queries
 // for interaction media features. Adapted from <https://codepen.io/Ferie/pen/vQOMmO>.
-twentytwenty.touchEnabled = {
+tsukiko.touchEnabled = {
 
 	init: function() {
 		var matchMedia = function() {
@@ -85,13 +85,13 @@ twentytwenty.touchEnabled = {
 			document.body.classList.add( 'touch-enabled' );
 		}
 	}
-}; // twentytwenty.touchEnabled
+}; // tsukiko.touchEnabled
 
 /*	-----------------------------------------------------------------------------------------------
 	Cover Modals
 --------------------------------------------------------------------------------------------------- */
 
-twentytwenty.coverModals = {
+tsukiko.coverModals = {
 
 	init: function() {
 		if ( document.querySelector( '.cover-modal' ) ) {
@@ -204,7 +204,7 @@ twentytwenty.coverModals = {
 					htmlStyle.setProperty( styleKey, styles[ styleKey ] );
 				} );
 
-				_win.twentytwenty.scrolled = parseInt( styles.top, 10 );
+				_win.tsukiko.scrolled = parseInt( styles.top, 10 );
 
 				if ( adminBar ) {
 					_doc.body.style.setProperty( 'padding-top', paddingTop );
@@ -228,7 +228,7 @@ twentytwenty.coverModals = {
 				}
 
 				setTimeout( function() {
-					var clickedEl = twentytwenty.toggles.clickedEl;
+					var clickedEl = tsukiko.toggles.clickedEl;
 
 					modal.classList.remove( 'show-modal' );
 
@@ -246,9 +246,9 @@ twentytwenty.coverModals = {
 						clickedEl = false;
 					}
 
-					_win.scrollTo( 0, Math.abs( _win.twentytwenty.scrolled + getAdminBarHeight() ) );
+					_win.scrollTo( 0, Math.abs( _win.tsukiko.scrolled + getAdminBarHeight() ) );
 
-					_win.twentytwenty.scrolled = 0;
+					_win.tsukiko.scrolled = 0;
 				}, 500 );
 			} );
 		} );
@@ -277,13 +277,13 @@ twentytwenty.coverModals = {
 		}
 	}
 
-}; // twentytwenty.coverModals
+}; // tsukiko.coverModals
 
 /*	-----------------------------------------------------------------------------------------------
 	Intrinsic Ratio Embeds
 --------------------------------------------------------------------------------------------------- */
 
-twentytwenty.intrinsicRatioVideos = {
+tsukiko.intrinsicRatioVideos = {
 
 	init: function() {
 		this.makeFit();
@@ -320,12 +320,12 @@ twentytwenty.intrinsicRatioVideos = {
 		} );
 	}
 
-}; // twentytwenty.instrinsicRatioVideos
+}; // tsukiko.instrinsicRatioVideos
 
 /*	-----------------------------------------------------------------------------------------------
 	Modal Menu
 --------------------------------------------------------------------------------------------------- */
-twentytwenty.modalMenu = {
+tsukiko.modalMenu = {
 
 	init: function() {
 		// If the current menu item is in a sub level, expand all the levels higher up on load.
@@ -340,10 +340,10 @@ twentytwenty.modalMenu = {
 			var activeMenuItem = modalMenu.querySelector( '.current-menu-item' );
 
 			if ( activeMenuItem ) {
-				twentytwentyFindParents( activeMenuItem, 'li' ).forEach( function( element ) {
+				tsukikoFindParents( activeMenuItem, 'li' ).forEach( function( element ) {
 					var subMenuToggle = element.querySelector( '.sub-menu-toggle' );
 					if ( subMenuToggle ) {
-						twentytwenty.toggles.performToggle( subMenuToggle, true );
+						tsukiko.toggles.performToggle( subMenuToggle, true );
 					}
 				} );
 			}
@@ -355,7 +355,7 @@ twentytwenty.modalMenu = {
 
 		_doc.addEventListener( 'keydown', function( event ) {
 			var toggleTarget, modal, selectors, elements, menuType, bottomMenu, activeEl, lastEl, firstEl, tabKey, shiftKey,
-				clickedEl = twentytwenty.toggles.clickedEl;
+				clickedEl = tsukiko.toggles.clickedEl;
 
 			if ( clickedEl && _doc.body.classList.contains( 'showing-modal' ) ) {
 				toggleTarget = clickedEl.dataset.toggleTarget;
@@ -402,13 +402,13 @@ twentytwenty.modalMenu = {
 			}
 		} );
 	}
-}; // twentytwenty.modalMenu
+}; // tsukiko.modalMenu
 
 /*	-----------------------------------------------------------------------------------------------
 	Primary Menu
 --------------------------------------------------------------------------------------------------- */
 
-twentytwenty.primaryMenu = {
+tsukiko.primaryMenu = {
 
 	init: function() {
 		this.focusMenuWithChildren();
@@ -451,13 +451,13 @@ twentytwenty.primaryMenu = {
 			}
 		}
 	}
-}; // twentytwenty.primaryMenu
+}; // tsukiko.primaryMenu
 
 /*	-----------------------------------------------------------------------------------------------
 	Toggles
 --------------------------------------------------------------------------------------------------- */
 
-twentytwenty.toggles = {
+tsukiko.toggles = {
 
 	clickedEl: false,
 
@@ -494,9 +494,9 @@ twentytwenty.toggles = {
 
 		// Trigger events on the toggle targets before they are toggled.
 		if ( target.classList.contains( activeClass ) ) {
-			target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-before-active' ) );
+			target.dispatchEvent( tsukiko.createEvent( 'toggle-target-before-active' ) );
 		} else {
-			target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-before-inactive' ) );
+			target.dispatchEvent( tsukiko.createEvent( 'toggle-target-before-inactive' ) );
 		}
 
 		// Get the class to toggle, if specified.
@@ -517,7 +517,7 @@ twentytwenty.toggles = {
 
 			// Toggle the target of the clicked toggle.
 			if ( toggle.dataset.toggleType === 'slidetoggle' && ! instantly && duration !== '0' ) {
-				twentytwentyMenuToggle( newTarget, duration );
+				tsukikoMenuToggle( newTarget, duration );
 			} else {
 				newTarget.classList.toggle( classToToggle );
 			}
@@ -533,10 +533,10 @@ twentytwenty.toggles = {
 			}
 
 			// Toggle aria-expanded on the toggle.
-			twentytwentyToggleAttribute( toggle, 'aria-expanded', 'true', 'false' );
+			tsukikoToggleAttribute( toggle, 'aria-expanded', 'true', 'false' );
 
 			if ( self.clickedEl && -1 !== toggle.getAttribute( 'class' ).indexOf( 'close-' ) ) {
-				twentytwentyToggleAttribute( self.clickedEl, 'aria-expanded', 'true', 'false' );
+				tsukikoToggleAttribute( self.clickedEl, 'aria-expanded', 'true', 'false' );
 			}
 
 			// Toggle body class.
@@ -558,13 +558,13 @@ twentytwenty.toggles = {
 			}
 
 			// Trigger the toggled event on the toggle target.
-			target.dispatchEvent( twentytwenty.createEvent( 'toggled' ) );
+			target.dispatchEvent( tsukiko.createEvent( 'toggled' ) );
 
 			// Trigger events on the toggle targets after they are toggled.
 			if ( target.classList.contains( activeClass ) ) {
-				target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-after-active' ) );
+				target.dispatchEvent( tsukiko.createEvent( 'toggle-target-after-active' ) );
 			} else {
-				target.dispatchEvent( twentytwenty.createEvent( 'toggle-target-after-inactive' ) );
+				target.dispatchEvent( tsukiko.createEvent( 'toggle-target-after-inactive' ) );
 			}
 		}, timeOutTime );
 	},
@@ -628,7 +628,7 @@ twentytwenty.toggles = {
 		} );
 	}
 
-}; // twentytwenty.toggles
+}; // tsukiko.toggles
 
 /**
  * Is the DOM ready?
@@ -637,7 +637,7 @@ twentytwenty.toggles = {
  *
  * @param {Function} fn Callback function to run.
  */
-function twentytwentyDomReady( fn ) {
+function tsukikoDomReady( fn ) {
 	if ( typeof fn !== 'function' ) {
 		return;
 	}
@@ -649,13 +649,13 @@ function twentytwentyDomReady( fn ) {
 	document.addEventListener( 'DOMContentLoaded', fn, false );
 }
 
-twentytwentyDomReady( function() {
-	twentytwenty.toggles.init();              // Handle toggles.
-	twentytwenty.coverModals.init();          // Handle cover modals.
-	twentytwenty.intrinsicRatioVideos.init(); // Retain aspect ratio of videos on window resize.
-	twentytwenty.modalMenu.init();            // Modal Menu.
-	twentytwenty.primaryMenu.init();          // Primary Menu.
-	twentytwenty.touchEnabled.init();         // Add class to body if device is touch-enabled.
+tsukikoDomReady( function() {
+	tsukiko.toggles.init();              // Handle toggles.
+	tsukiko.coverModals.init();          // Handle cover modals.
+	tsukiko.intrinsicRatioVideos.init(); // Retain aspect ratio of videos on window resize.
+	tsukiko.modalMenu.init();            // Modal Menu.
+	tsukiko.primaryMenu.init();          // Primary Menu.
+	tsukiko.touchEnabled.init();         // Add class to body if device is touch-enabled.
 } );
 
 /*	-----------------------------------------------------------------------------------------------
@@ -664,7 +664,7 @@ twentytwentyDomReady( function() {
 
 /* Toggle an attribute ----------------------- */
 
-function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
+function tsukikoToggleAttribute( element, attribute, trueVal, falseVal ) {
 	if ( trueVal === undefined ) {
 		trueVal = true;
 	}
@@ -684,7 +684,7 @@ function twentytwentyToggleAttribute( element, attribute, trueVal, falseVal ) {
  * @param {HTMLElement} target
  * @param {number} duration
  */
-function twentytwentyMenuToggle( target, duration ) {
+function tsukikoMenuToggle( target, duration ) {
 	var initialParentHeight, finalParentHeight, menu, menuItems, transitionListener,
 		initialPositions = [],
 		finalPositions = [];
@@ -786,7 +786,7 @@ function twentytwentyMenuToggle( target, duration ) {
  * @param {string} query
  * @return {NodeList} parents matching query
  */
-function twentytwentyFindParents( target, query ) {
+function tsukikoFindParents( target, query ) {
 	var parents = [];
 
 	// Recursively go up the DOM adding matches to the parents array.

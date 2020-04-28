@@ -10,7 +10,7 @@
  *
  * @return {Object} - this
  */
-function _twentyTwentyColor( backgroundColor, accentHue ) {
+function _tsukikoColor( backgroundColor, accentHue ) {
 	// Set the object properties.
 	this.backgroundColor = backgroundColor;
 	this.accentHue = accentHue;
@@ -33,7 +33,7 @@ function _twentyTwentyColor( backgroundColor, accentHue ) {
  *
  * @return {Object} - this
  */
-_twentyTwentyColor.prototype.setAccentColorsArray = function() {
+_tsukikoColor.prototype.setAccentColorsArray = function() {
 	var self = this,
 		minSaturation = 65,
 		maxSaturation = 100,
@@ -116,7 +116,7 @@ _twentyTwentyColor.prototype.setAccentColorsArray = function() {
  *
  * @return {Color} - Returns a Color object.
  */
-_twentyTwentyColor.prototype.getTextColor = function() {
+_tsukikoColor.prototype.getTextColor = function() {
 	return this.textColor;
 };
 
@@ -127,7 +127,7 @@ _twentyTwentyColor.prototype.getTextColor = function() {
  *
  * @return {Color} - Returns a Color object.
  */
-_twentyTwentyColor.prototype.getAccentColor = function() {
+_tsukikoColor.prototype.getAccentColor = function() {
 	var fallback;
 
 	// If we have colors returns the 1st one - it has the highest score.
@@ -141,7 +141,7 @@ _twentyTwentyColor.prototype.getAccentColor = function() {
 };
 
 /**
- * Return a new instance of the _twentyTwentyColor object.
+ * Return a new instance of the _tsukikoColor object.
  *
  * @since Twenty Twenty 1.0
  *
@@ -149,8 +149,8 @@ _twentyTwentyColor.prototype.getAccentColor = function() {
  * @param {number} accentHue - The hue for our accent color.
  * @return {Object} - this
  */
-function twentyTwentyColor( backgroundColor, accentHue ) {// jshint ignore:line
-	var color = new _twentyTwentyColor( backgroundColor, accentHue );
+function tsukikoColor( backgroundColor, accentHue ) {// jshint ignore:line
+	var color = new _tsukikoColor( backgroundColor, accentHue );
 	color.setAccentColorsArray();
 	return color;
 }

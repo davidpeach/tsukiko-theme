@@ -1,4 +1,4 @@
-/* global twentyTwentyBgColors, twentyTwentyPreviewEls, jQuery, _, wp */
+/* global tsukikoBgColors, tsukikoPreviewEls, jQuery, _, wp */
 /**
  * Customizer enhancements for a better user experience.
  *
@@ -123,21 +123,21 @@
 			// Generate the styles.
 			// Add a small delay to be sure the accessible colors were generated.
 			setTimeout( function() {
-				Object.keys( twentyTwentyBgColors ).forEach( function( context ) {
-					twentyTwentyGenerateColorA11yPreviewStyles( context );
+				Object.keys( tsukikoBgColors ).forEach( function( context ) {
+					tsukikoGenerateColorA11yPreviewStyles( context );
 				} );
 			}, 50 );
 		} );
 	} );
 
 	// Add listeners for background-color settings.
-	Object.keys( twentyTwentyBgColors ).forEach( function( context ) {
-		wp.customize( twentyTwentyBgColors[ context ].setting, function( value ) {
+	Object.keys( tsukikoBgColors ).forEach( function( context ) {
+		wp.customize( tsukikoBgColors[ context ].setting, function( value ) {
 			value.bind( function() {
 				// Generate the styles.
 				// Add a small delay to be sure the accessible colors were generated.
 				setTimeout( function() {
-					twentyTwentyGenerateColorA11yPreviewStyles( context );
+					tsukikoGenerateColorA11yPreviewStyles( context );
 				}, 50 );
 			} );
 		} );
@@ -152,21 +152,21 @@
 	 *
 	 * @return {void}
 	 */
-	function twentyTwentyGenerateColorA11yPreviewStyles( context ) {
+	function tsukikoGenerateColorA11yPreviewStyles( context ) {
 		// Get the accessible colors option.
 		var a11yColors = window.parent.wp.customize( 'accent_accessible_colors' ).get(),
-			stylesheedID = 'twentytwenty-customizer-styles-' + context,
+			stylesheedID = 'tsukiko-customizer-styles-' + context,
 			stylesheet = $( '#' + stylesheedID ),
 			styles = '';
 		// If the stylesheet doesn't exist, create it and append it to <head>.
 		if ( ! stylesheet.length ) {
-			$( '#twentytwenty-style-inline-css' ).after( '<style id="' + stylesheedID + '"></style>' );
+			$( '#tsukiko-style-inline-css' ).after( '<style id="' + stylesheedID + '"></style>' );
 			stylesheet = $( '#' + stylesheedID );
 		}
 		if ( ! _.isUndefined( a11yColors[ context ] ) ) {
 			// Check if we have elements defined.
-			if ( twentyTwentyPreviewEls[ context ] ) {
-				_.each( twentyTwentyPreviewEls[ context ], function( items, setting ) {
+			if ( tsukikoPreviewEls[ context ] ) {
+				_.each( tsukikoPreviewEls[ context ], function( items, setting ) {
 					_.each( items, function( elements, property ) {
 						if ( ! _.isUndefined( a11yColors[ context ][ setting ] ) ) {
 							styles += elements.join( ',' ) + '{' + property + ':' + a11yColors[ context ][ setting ] + ';}';
@@ -180,7 +180,201 @@
 	}
 	// Generate styles on load. Handles page-changes on the preview pane.
 	$( document ).ready( function() {
-		twentyTwentyGenerateColorA11yPreviewStyles( 'content' );
-		twentyTwentyGenerateColorA11yPreviewStyles( 'header-footer' );
+		tsukikoGenerateColorA11yPreviewStyles( 'content' );
+		tsukikoGenerateColorA11yPreviewStyles( 'header-footer' );
 	} );
+
+
+
+	// FROM tsukiko
+	api.bind( 'preview-ready', function() {
+		// Disable smooth scroll when controls sidebar is expanded
+		$( 'html' ).css( 'scroll-behavior', 'auto' );
+
+		api.preview.bind( 'tsukiko-customizer-sidebar-expanded', function( expanded ) {
+			$( 'html' ).css( 'scroll-behavior', 'true' === expanded ? 'auto' : 'smooth' );
+		} );
+	} );
+
+	api( 'tsukiko_text_width', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).removeClass( 'tsukiko-text-width-medium tsukiko-text-width-wide' );
+			if ( to ) {
+				$( 'body' ).addClass( 'tsukiko-text-width-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_body_font_size', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).removeClass( 'tsukiko-site-font-small tsukiko-site-font-medium' );
+			if ( to ) {
+				$( 'body' ).addClass( 'tsukiko-site-font-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_body_line_height', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).removeClass( 'tsukiko-site-lh-medium tsukiko-site-lh-loose' );
+			if ( to ) {
+				$( 'body' ).addClass( 'tsukiko-site-lh-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_heading_letter_spacing', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).toggleClass( 'tsukiko-heading-ls-normal', to === 'normal' );
+		} );
+	} );
+
+	api( 'tsukiko_h1_font_size', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).removeClass( 'tsukiko-h1-font-small tsukiko-h1-font-medium tsukiko-h1-font-large' );
+			if ( to ) {
+				$( 'body' ).addClass( 'tsukiko-h1-font-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_logo_text_transform', function( value ) {
+		value.bind( function( to ) {
+			$( '.site-title' ).css( { 'text-transform': to ? to : 'none' } );
+		} );
+	} );
+
+	api( 'tsukiko_menu_spacing', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).removeClass( 'tsukiko-nav-spacing-medium tsukiko-nav-spacing-large' );
+			if ( to ) {
+				$( 'body' ).addClass( 'tsukiko-nav-spacing-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_menu_font_size', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).removeClass( 'tsukiko-nav-size-small tsukiko-nav-size-medium tsukiko-nav-size-larger' );
+			if ( to ) {
+				$( 'body' ).addClass( 'tsukiko-nav-size-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_menu_text_transform', function( value ) {
+		value.bind( function( to ) {
+			if ( to ) {
+				$( 'ul.primary-menu a, ul.modal-menu a' ).css( { 'text-transform': to, 'letter-spacing': 'uppercase' === to ? '0.0333em' : 'normal' } );
+			} else {
+				$( 'ul.primary-menu a, ul.modal-menu a' ).css( { 'text-transform': 'none', 'letter-spacing':'normal' } );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_cover_page_height', function( value ) {
+		value.bind( function( to ) {
+			$( '.page-template-template-cover' ).removeClass( 'tsukiko-cover-medium' );
+			if ( to ) {
+				$( '.page-template-template-cover' ).addClass( 'tsukiko-cover-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_cover_post_height', function( value ) {
+		value.bind( function( to ) {
+			$( '.post-template-template-cover' ).removeClass( 'tsukiko-cover-medium' );
+			if ( to ) {
+				$( '.post-template-template-cover' ).addClass( 'tsukiko-cover-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_cover_vertical_align', function( value ) {
+		value.bind( function( to ) {
+			$( '.template-cover' ).removeClass( 'tsukiko-cover-center' );
+			if ( to ) {
+				$( '.template-cover' ).addClass( 'tsukiko-cover-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_cover_page_scroll_indicator', function( value ) {
+		value.bind( function( to ) {
+			$( '.page-template-template-cover' ).toggleClass( 'tsukiko-cover-hide-arrow' );
+		} );
+	} );
+
+	api( 'tsukiko_header_width', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).removeClass( 'tsukiko-header-wide tsukiko-header-full' );
+			if ( to ) {
+				$( 'body' ).addClass( 'tsukiko-header-' + to );
+			}
+		} );
+	} );
+
+	api( 'tsukiko_footer_width', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).removeClass( 'tsukiko-footer-wider tsukiko-footer-full' );
+			if ( to ) {
+				$( 'body' ).addClass( 'tsukiko-footer-' + to );
+			}
+		} );
+	} );
+
+	function tsukikoLoadGoogleFont( context, to ) {
+		if ( to && 'sans-serif' !== to ) {
+			var font, style, el, styleID, fontVariations;
+
+			font = to.replace( / /g, '+' );
+			fontVariations = 'body' === context ? '400,400i,500,600,700,800,900' : '400,500,600,700,800,900';
+			styleID = 'tsukiko-customizer-font-' + context;
+			style = '<link rel="stylesheet" type="text/css" id="' + styleID + '" href="https://fonts.googleapis.com/css?family=' + font + ':' + fontVariations + '">';
+			el = $( '#' + styleID );
+
+			if ( el.length ) {
+				el.replaceWith( style );
+			} else {
+				$( 'head' ).append( style );
+			}
+		}
+	}
+
+	api( 'tsukiko_body_font', function( value ) {
+		var onChange = function( to ) {
+			tsukikoLoadGoogleFont( 'body', to );
+		};
+		onChange( value.get() );
+		value.bind( onChange );
+	} );
+
+	api( 'tsukiko_heading_font', function( value ) {
+		var onChange = function( to ) {
+			tsukikoLoadGoogleFont( 'heading', to );
+		};
+		onChange( value.get() );
+		value.bind( onChange );
+	} );
+
+	api( 'tsukiko_logo_font', function( value ) {
+		var onChange = function( to ) {
+			tsukikoLoadGoogleFont( 'logo', to );
+		};
+		onChange( value.get() );
+		value.bind( onChange );
+	} );
+
+	var style = $( '#tsukiko-customizer-live-css' );
+	if ( ! style.length ) {
+		style = $( 'head' ).append( '<style type="text/css" id="tsukiko-customizer-live-css" />' ).find( '#tsukiko-customizer-live-css' );
+	}
+
+	api.bind( 'preview-ready', function() {
+		api.preview.bind( 'update-customizer-live-css', function( css ) {
+			style.text( css );
+		} );
+	} );
+
+
 }( jQuery, wp.customize, _ ) );

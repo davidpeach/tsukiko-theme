@@ -1,5 +1,5 @@
 {
-	"name": "twentytwenty",
+	"name": "tsukiko",
 	"version": "1.0.0",
 	"description": "Default WP Theme",
 	"author": "The WordPress Contributors",
@@ -7,15 +7,15 @@
 	"keywords": [
 		"WordPress",
 		"Theme",
-		"TwentyTwenty"
+		"tsukiko"
 	],
-	"homepage": "https://github.com/wordpress/twentytwenty#readme",
+	"homepage": "https://github.com/wordpress/tsukiko#readme",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/wordpress/twentytwenty.git"
+		"url": "git+https://github.com/wordpress/tsukiko.git"
 	},
 	"bugs": {
-		"url": "https://github.com/wordpress/twentytwenty/issues"
+		"url": "https://github.com/wordpress/tsukiko/issues"
 	},
 	"devDependencies": {
 		"@wordpress/browserslist-config": "^2.6.0",
